@@ -1,6 +1,6 @@
 # Useful hooks
 
-A collection of custom React hooks.
+A collection of useful custom React hooks.
 
 Hooks included:
 
