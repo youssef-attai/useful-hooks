@@ -29,10 +29,16 @@ const { execute, status, result, error } = useAsync<string, string>(someAsyncFun
 Here, `execute` is an async function that calls `someAsyncFuncThatReturnsAString`, but also
 updates the `status`, `result`, and `error` state variables.
 
-`status` will be `idle` by default, once you call `execute`, it will be `pending` until the async call
-of `someAsyncFuncThatReturnsAString` resolves or throws an error. If the call was successful, `status`
-will be `success`, if it wasn't, it will be `error`.
+`status` will be `idle` by default.
+
+Once you call `execute`, `status` will be `pending` until the async call
+of `someAsyncFuncThatReturnsAString` resolves or throws an error.
+
+If the call was successful, `status` will be `success`.
+
+If it wasn't, `status` will be `error`.
 
 Also, note that in `useAsync<string, string>`, the first `string` is the return type 
-of `someAsyncFuncThatReturnsAString` when resolved. The second `string` is the type 
-of `error`, the one thrown when the async call is not successful.
+of `someAsyncFuncThatReturnsAString` when resolved.
+
+The second `string` is the type of `error`, the one thrown when the async call is not successful.
