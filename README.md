@@ -30,7 +30,7 @@ Here, `execute` is an async function that calls `someAsyncFuncThatReturnsAString
 updates the `status`, `result`, and `error` state variables.
 
 `status` will be `idle` by default, once you call `execute`, it will be `pending` until the async call
-of `someAsyncFuncThatReturnsAString` resolves and throws an error. If the call was successful, `status`
+of `someAsyncFuncThatReturnsAString` resolves or throws an error. If the call was successful, `status`
 will be `success`, if it wasn't, it will be `error`.
 
 Also, note that in `useAsync<string, string>`, the first `string` is the return type 
