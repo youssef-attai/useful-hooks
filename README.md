@@ -2,13 +2,13 @@
 
 A collection of useful custom React hooks.
 
-Hooks included:
+## Hooks included:
 
-## `useLocalStorage`
+### `useLocalStorage`
 
 Similar to `useState`, but persists the value to local storage.
 
-### Usage
+#### Usage
 
 ```typescript
 const [username, setUsername] = useLocalStorage<string>("username", "Andrew");
@@ -16,11 +16,11 @@ const [username, setUsername] = useLocalStorage<string>("username", "Andrew");
 
 Here, `setUsername` will also update the value at the key `username` in local storage.
 
-## `useAsync`
+### `useAsync`
 
 Keeps track of the state of an async function call.
 
-### Usage
+#### Usage
 
 ```typescript
 const { execute, status, result, error } = useAsync<string, string>(someAsyncFuncThatReturnsAString);
