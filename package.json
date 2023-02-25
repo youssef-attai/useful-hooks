@@ -1,7 +1,7 @@
 {
   "name": "@youssef-attai/useful-hooks",
   "description": "A collection of useful custom React hooks.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Youssef Attai",
   "license": "MIT",
   "type": "module",
