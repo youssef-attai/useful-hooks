@@ -12,6 +12,13 @@ Similar to `useState`, but persists the value to local storage.
 
 ```typescript
 const [username, setUsername] = useLocalStorage<string>("username", "Andrew");
+
+console.log(username); // "Andrew"
+
+setUsername("Bob");
+
+console.log(username); // "Bob"
+
 ```
 
 Here, `setUsername` will also update the value at the key `username` in local storage.
@@ -23,22 +30,23 @@ Keeps track of the state of an async function call.
 #### Usage
 
 ```typescript
-const { execute, status, result, error } = useAsync<string, string>(someAsyncFuncThatReturnsAString);
+const { execute, status, result, error } = useAsync<string, string>(someAsyncFunc);
+
+return (
+    <>
+        {status === "idle" && <button onClick={() => {execute("hello world");}}>Click me</button>}
+        {status === "pending" && <div>Loading...</div>}
+        {status === "success" && <div>{result}</div>}
+        {status === "error" && <div>{error}</div>}
+    </>
+)
+
 ```
 
-Here, `execute` is an async function that calls `someAsyncFuncThatReturnsAString`, but also
-updates the `status`, `result`, and `error` state variables.
+`execute` is a function that will call `someAsyncFunc` with the given arguments. 
 
-`status` will be `idle` by default.
+`status` will be one of the following: `idle`, `pending`, `success`, `error`
 
-Once you call `execute`, `status` will be `pending` until the async call
-of `someAsyncFuncThatReturnsAString` resolves or throws an error.
+`result` is the return of `someAsyncFunc`
 
-If the call was successful, `status` will be `success`.
-
-If it wasn't, `status` will be `error`.
-
-Also, note that in `useAsync<string, string>`, the first `string` is the return type 
-of `someAsyncFuncThatReturnsAString` when resolved.
-
-The second `string` is the type of `error`, the one thrown when the async call is not successful.
+`error` is the thrown error while executing `someAsyncFunc` (if any)
